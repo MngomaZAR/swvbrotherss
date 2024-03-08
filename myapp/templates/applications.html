@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWV Brothers Group Application</title>
+    <style>
+        /* Additional CSS for layout and colors */
+        body {
+            background-color: #f0f0f0; /* Light grey background */
+            color: #333333; /* Dark grey text */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff; /* White container background */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+        }
+
+        h1 {
+            color: #CC9900; /* Gold heading color */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #CCCCCC; /* Light grey border */
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        .btn {
+            background-color: #CC9900; /* Gold button background */
+            color: #ffffff; /* White button text */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        input[type="submit"]:hover,
+        .btn:hover {
+            background-color: #ffd700; /* Brighter metallic gold on hover */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .error-message {
+            color: #ff0000; /* Red error message color */
+            margin-top: 5px;
+        }
+        </style>
+    </head>
+<body>
+    <h1>Application Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <div>
+        <a href="{% url 'about' %}" class="btn">About Us</a>
+        <a href="{% url 'contact' %}" class="btn">Contact Us</a>
+        <a href="{% url 'index' %}" class="btn">Home</a>
+        <a href="{% url 'work' %}" class="btn">Our Work</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SWV Brothers</title>
+    <style>
+        /* Additional CSS for layout and colors */
+        body {
+            background-color: #333333; /* Black background */
+            color: #CCCCCC; /* Light grey text */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #CC9900; /* Gold */
+            color: #333333; /* Black text */
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        main {
+            padding: 20px;
+        }
+        
+        .contact-info, .contact-form {
+            background-color: #CCCCCC; /* Light grey background */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Dark shadow */
+            border: 2px solid #CC9900; /* Gold border */
+        }
+        
+        h2 {
+            color: #CC9900; /* Gold heading */
+            margin-bottom: 10px;
+        }
+        
+        h3 {
+            color: #333333; /* Black heading */
+            margin-top: 20px;
+        }
+        
+        ul {
+            color: #666666; /* Dark grey list items */
+            margin-bottom: 15px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #666666; /* Dark grey border */
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        
+        button[type="submit"] {
+            background-color: #FFD700; /* Gold button */
+            color: #333333; /* Black text */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #FFC800; /* Brighter gold on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Light shadow on hover */
+        }
+
+        footer {
+            background-color: #333333; /* Dark grey */
+            color: #CCCCCC; /* Light grey text */
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #333333; /* Black text */
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #FFD700; /* Gold button */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #FFC800; /* Brighter gold on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Contact Us</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="work.html">Our Work</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="applications.html">Applications</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container">
+            <section class="contact-info">
+                <h2>Contact Information</h2>
+                <ul>
+                    <li><strong>Phone:</strong> +27 76 503 8785</li>
+                    <li><strong>Email:</strong> Simphiwe.vilakazi@swvbrothers.co.za</li>
+                    <li><strong>Address:</strong> F 130 Luthando Road, Ntuzuma, Durban, RSA</li>
+                </ul>
+            </section>
+
+            <section class="contact-form">
+                <h2>Send Us a Message</h2>
+                <form id="contactForm" action="{% url 'contact' %}" method="POST" onsubmit="return validateForm()">
+                    {% csrf_token %}
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div>
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SWV Brothers. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript validation for the Contact Us form
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                alert('All fields are required.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
+
